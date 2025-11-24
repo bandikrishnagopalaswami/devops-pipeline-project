@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE .'
@@ -29,8 +30,8 @@ pipeline {
 
         stage('Deploy via Docker Compose') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d'
+                sh 'docker compose down || true'
+                sh 'docker compose up -d'
             }
         }
     }
